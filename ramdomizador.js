@@ -1,48 +1,18 @@
+//funcion de muestreo simple  //funciona sin problemas hasta 10 elevadoa a la setima potencia
+function ramdom(muestra, poblacion) {
+    lista = []     //creamos un objecto con los posibles 
+    resultado = [] //creamos un objecto con los resultados aleatorios
 
-    //funcion de aleatoridas necesita dos valores la muestra y la poblacion
-    function aleatorio(muestra, poblacion ) {
-        console.log("inicio del ciclo")
-        //variable donde se guardan los datos aleatorios elegidos
-        var Resultado = [];
-        //ciclo for
-        for (let i = 1; i < muestra + 1; i++) {
-            //declaramos variable
-            let elegido = 0
-            //la variable elegido es igual a un numero aleatorio
-            elegido = (Math.random() * poblacion).toFixed()
-            //comprobamos si el dato no se repite
-            if(Resultado.includes(elegido) == false){
-                //no se repite el valor
-                //agregamos el valor a Resultado
-                Resultado.push(elegido)
-            }else{
-                //repetimos el cliclo una vez
-                elegido = (Math.random() * poblacion).toFixed()
-
-                if(Resultado.includes(elegido) == false){
-                 //no se repite el valor
-                 //agregamos el valor a Resultado
-                 Resultado.push(elegido)
-                }else{
-                 //repetimos el cliclo otra vez
-                 elegido = (Math.random() * poblacion).toFixed()
-                
-                 if(Resultado.includes(elegido) == false){
-                  //no se repite el valor
-                  //agregamos el valor a Resultado
-                  Resultado.push(elegido)
-                 }
-                }
-            }
-        }
-        console.log("Termino el cliclo") //informamos que el ciclo termino
-        //termino el ciclo
-        //comprobamos si no se repitio ningun resultado
-        if(Resultado.length < muestra){
-            //se repitieron valores volvemos a empezar
-            aleatorio(muestra, poblacion)
-        }
-        //mostramos en la consola en resultado
-        return Resultado
+    //rellenamos la lista 
+    for (let index = 0; index < poblacion + 1; index++) {
+        lista.push("" + index) //creamos el posible resultado
     }
-    
+
+    for (let i = 0; i < muestra; i++) {
+        Raleatorio = parseInt(Math.random() * lista.length) //creamos una variable aletoria basada en los posibles resultados
+        lista.pop(Raleatorio)       //quitamos Raleatorio de la lista de posibles resultados
+        resultado.push(Raleatorio)  //agregamos el Raleatorio a resultado       
+    }
+
+    return resultado
+}
